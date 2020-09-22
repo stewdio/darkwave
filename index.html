@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Darkwave.js</title>
+		<meta charset="utf-8">
+		<meta name="viewport"             content="width=device-width,initial-scale=1.0">
+		<meta name="description"          content="Chunky analog synth sounds from your guitar fretboard.">
+		<meta name="copyright"            content="Stewart Smith 2020">
+		<meta name="keywords"             content="
+			WebAudio, WebAudio API, WebAudioAPI, 
+			JavaScript, ES6, CSS, CSS3, HTML, HTML5,
+			Web, Web site, website, Web browser, browser, HTML, HTML5, JavaScript, ES6, CSS,
+			Chrome, Firefox, Safari, Opera, Brave, Edge, WebKit, Blink, Gecko, Mozilla,
+			Stewart Smith, Stewart, Stew, Stuart, Steven, Steve, Stewdio, stewartsmith, stew_rtsmith, @stew_rtsmith,
+			Moar, Moar Technologies Corp, MTC, @moar_tech">
+		
+		<meta name="twitter:card"         content="summary_large_image">
+		<meta name="twitter:site"         content="@stew_rtsmith">
+		<meta name="twitter:creator"      content="@stew_rtsmith">
+		<meta name="twitter:title"        content="Darkwave.js">
+		<meta name="twitter:description"  content="Chunky analog synth sounds from your guitar fretboard.">
+		<meta name="twitter:image"        content="https://stewartsmith.io/darkwave/darkwave.jpg">
+		
+		<meta property="og:type"          content="website">
+		<meta property="og:title"         content="Darkwave.js">
+		<meta property="og:description"   content="Chunky analog synth sounds from your guitar fretboard.">
+		<meta property="og:image"         content="https://stewartsmith.io/darkwave/darkwave.jpg">
+		<meta property="og:url"           content="https://stewartsmith.io/darkwave">
+		
+		<link rel="canonical" href="https://stewartsmith.io/darkwave">
+		<link href="favicon-064.png" rel="icon" type="image/png">
+		<link href="favicon-144.png" rel="apple-touch-icon">
+
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://www.googletagmanager.com/gtag/js" async></script>
+		<script src="ga.js"></script>
+		<script src="darkwave.js"></script>
+	</head>
+	<body>
+		<div class="pad">
+			<table>
+				<tr>
+					<td>
+						<canvas id="scope"></canvas>
+					</td>
+					<td>
+						Frequency: <span id="frequencyHz">?</span> Hz<br>
+						Confidence: <span id="confidence">?</span><br>
+						Root Mean Square: <span id="rootMeanSquare">?</span><br>
+						Volume: <span id="volume">0</span><br>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="voices">
+			<table>
+				<thead>
+					<td>&nbsp;</td>
+					<td>Wave type</td>
+					<td>Frequency factor</td>
+					<td>Volume factor</td>
+					<td>&nbsp;</td>
+				</thead>
+				<template id="voice">
+					<tr class="voice">
+						<td class="voice-index">1</td>
+						<td
+							><select name="waveType" id="pet-select">
+								<option value="sine">Sine</option>
+								<option value="square">Square</option>
+								<option value="sawtooth">Sawtooth</option>
+								<option value="triangle">Triangle</option>
+							</select
+						></td>
+						<td
+							><input type="text" name="frequency" value="0.5"
+						></td>
+						<td
+							><input type="text" name="volume" value="0.5"
+						></td>
+						<td><div class="voice-delete">–</div></td>
+					</tr>
+				</template>
+			</table>
+			<div id="voice-add">+</div>
+		</div>
+		<div class="pad">
+			Tap anywhere to activate Darkwave.<br>
+			Then tap “Allow” to allow microphone use (or whatever line input you’re piping in via the OS).
+			<br>
+			<br>
+			You can use URLs to load this page with oscillator settings preset like so:
+			<code>/darkwave/#square,0.5,0.8;triangle,0.75,0.2;sine,1,0.3</code>
+			<br>
+			<br>
+			<a target="_blank" href="https://github.com/stewdio/darkwave">Contribute to Darkwave on GitHub!</a>
+		</div>
+	</body>
+</html>
