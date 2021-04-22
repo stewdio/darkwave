@@ -224,7 +224,12 @@ function autoCorrelate( buf, sampleRate ){
 
 	//  x
 
-	for( let offset = MIN_SAMPLES; offset < MAX_SAMPLES; offset ++ ){
+	for( 
+	
+		let offset = MIN_SAMPLES; 
+		offset < MAX_SAMPLES; 
+		offset ++ 
+	){
 		
 		let correlation = 0
 		for( let  i = 0; i < MAX_SAMPLES; i ++ ){

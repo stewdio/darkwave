@@ -1,58 +1,51 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Darkwave.js</title>
+		<script src="https://www.googletagmanager.com/gtag/js" async></script>
+		<script src="scripts/ga.js"></script>
+
+		<title>Darkwave</title>
 		<meta charset="utf-8">
 		<meta name="viewport"             content="width=device-width,initial-scale=1.0">
 		<meta name="description"          content="Chunky analog synth sounds from your guitar fretboard.">
-		<meta name="copyright"            content="Stewart Smith 2020">
+		<meta name="copyright"            content="Stewart Smith 2020–2021">
 		<meta name="keywords"             content="
-			WebAudio, WebAudio API, WebAudioAPI, 
-			JavaScript, ES6, CSS, CSS3, HTML, HTML5,
-			Web, Web site, website, Web browser, browser, HTML, HTML5, JavaScript, ES6, CSS,
+			Web, Web site, website, Web browser, browser,
 			Chrome, Firefox, Safari, Opera, Brave, Edge, WebKit, Blink, Gecko, Mozilla,
+			HTML, HTML5, CSS, CSS3, JavaScript, ES6, WebAudio, WebAudio API, WebAudioAPI,
 			Stewart Smith, Stewart, Stew, Stuart, Steven, Steve, Stewdio, stewartsmith, stew_rtsmith, @stew_rtsmith,
 			Moar, Moar Technologies Corp, MTC, @moar_tech">
 		
 		<meta name="twitter:card"         content="summary_large_image">
 		<meta name="twitter:site"         content="@stew_rtsmith">
 		<meta name="twitter:creator"      content="@stew_rtsmith">
-		<meta name="twitter:title"        content="Darkwave.js">
+		<meta name="twitter:title"        content="Darkwave">
 		<meta name="twitter:description"  content="Chunky analog synth sounds from your guitar fretboard.">
 		<meta name="twitter:image"        content="https://stewartsmith.io/darkwave/darkwave.jpg">
 		
 		<meta property="og:type"          content="website">
-		<meta property="og:title"         content="Darkwave.js">
+		<meta property="og:title"         content="Darkwave">
 		<meta property="og:description"   content="Chunky analog synth sounds from your guitar fretboard.">
 		<meta property="og:image"         content="https://stewartsmith.io/darkwave/darkwave.jpg">
 		<meta property="og:url"           content="https://stewartsmith.io/darkwave">
 		
 		<link rel="canonical" href="https://stewartsmith.io/darkwave">
-		<link href="favicon-064.png" rel="icon" type="image/png">
-		<link href="favicon-144.png" rel="apple-touch-icon">
+		<link href="media/favicon-064.png" rel="icon" type="image/png">
+		<link href="media/favicon-144.png" rel="apple-touch-icon">
 
-		<link rel="stylesheet" href="styles.css">
-		<script src="https://www.googletagmanager.com/gtag/js" async></script>
-		<script src="ga.js"></script>
-		<script src="darkwave.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="styles/styles.css">
+
+
+		<script type="module" src="scripts/Darkwave.js"></script>
 	</head>
 	<body>
-		<div class="pad">
-			<table>
-				<tr>
-					<td>
-						<canvas id="scope"></canvas>
-					</td>
-					<td>
-						Frequency: <span id="frequencyHz">?</span> Hz<br>
-						Confidence: <span id="confidence">?</span><br>
-						Root Mean Square: <span id="rootMeanSquare">?</span><br>
-						Volume: <span id="volume">0</span><br>
-					</td>
-				</tr>
-			</table>
+		<h1>Darkwave</h1>
+		<div id="frequencies-container">
+			<canvas id="frequencies-graph"></canvas>
+			<div id="banks"></div>
 		</div>
-		<div id="voices">
+		<div id="params">
 			<table>
 				<thead>
 					<td>&nbsp;</td>
@@ -61,9 +54,9 @@
 					<td>Volume factor</td>
 					<td>&nbsp;</td>
 				</thead>
-				<template id="voice">
-					<tr class="voice">
-						<td class="voice-index">1</td>
+				<template id="param">
+					<tr class="param">
+						<td class="param-index">1</td>
 						<td
 							><select name="waveType" id="pet-select">
 								<option value="sine">Sine</option>
@@ -73,17 +66,20 @@
 							</select
 						></td>
 						<td
-							><input type="text" name="frequency" value="0.5"
+							><input type="text" name="frequencyFactor" value="0.5"
 						></td>
 						<td
-							><input type="text" name="volume" value="0.5"
+							><input type="text" name="volumeFactor" value="0.5"
 						></td>
-						<td><div class="voice-delete">–</div></td>
+						<td><div class="param-remove">–</div></td>
 					</tr>
 				</template>
 			</table>
-			<div id="voice-add">+</div>
+			<div id="param-add">+</div>
 		</div>
+
+
+
 		<div class="pad">
 			Tap anywhere to activate Darkwave.<br>
 			Then tap “Allow” to allow microphone use (or whatever line input you’re piping in via the OS).
