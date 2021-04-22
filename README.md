@@ -1,6 +1,6 @@
 
 
-<img src="https://raw.githubusercontent.com/stewdio/darkwave/master/darkwave.jpg" title="Darkwave" width="300" height="300">  
+<img src="https://raw.githubusercontent.com/stewdio/darkwave/master/media/darkwave.jpg" title="Darkwave" width="300" height="300">  
   
   
 Darkwave
